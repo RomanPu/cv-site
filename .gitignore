@@ -43,3 +43,8 @@ next-env.d.ts
 
 # superpowers scratch
 .superpowers/
+
+# worker
+worker/node_modules/
+worker/.wrangler/
+worker/.dev.vars

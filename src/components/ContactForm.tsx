@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { CONTACT_LIMITS } from "@/lib/contact";
+import { CONTACT_LIMITS, HONEYPOT_FIELD } from "@/lib/contact";
 import { profile } from "@/data/profile";
 
 type Status =
@@ -102,8 +102,8 @@ export default function ContactForm() {
       {/* Honeypot — hidden from people, tempting to bots */}
       <div aria-hidden className="absolute -left-[9999px] h-px w-px overflow-hidden">
         <label>
-          Company
-          <input name="company" tabIndex={-1} autoComplete="off" />
+          Leave this empty
+          <input name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" />
         </label>
       </div>
 

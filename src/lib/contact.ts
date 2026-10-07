@@ -1,5 +1,8 @@
 export const CONTACT_LIMITS = { name: 100, email: 254, message: 5000 } as const;
 
+/** Hidden spam-trap input. Opaque name so browser autofill never fills it. */
+export const HONEYPOT_FIELD = "hp_x7";
+
 export type ContactData = { name: string; email: string; message: string };
 
 export type ContactValidation =
@@ -23,7 +26,8 @@ export function validateContact(input: unknown): ContactValidation {
   const body = input as Record<string, unknown>;
 
   // Honeypot: hidden from humans, bots tend to fill it.
-  if (typeof body.company === "string" && body.company.trim() !== "") {
+  const trap = body[HONEYPOT_FIELD];
+  if (typeof trap === "string" && trap.trim() !== "") {
     return { ok: false, error: "spam" };
   }
 

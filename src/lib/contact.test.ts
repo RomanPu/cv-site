@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { validateContact } from "@/lib/contact";
+import { HONEYPOT_FIELD, validateContact } from "@/lib/contact";
 
 const valid = { name: "Dana", email: "dana@example.com", message: "Hi Roman!" };
 
@@ -48,8 +48,12 @@ describe("validateContact", () => {
     expect(validateContact(input).ok).toBe(false);
   });
 
+  it("does not treat an autofilled company field as spam", () => {
+    expect(validateContact({ ...valid, company: "Acme" }).ok).toBe(true);
+  });
+
   it("flags a filled honeypot as spam", () => {
-    expect(validateContact({ ...valid, company: "Acme" })).toEqual({
+    expect(validateContact({ ...valid, [HONEYPOT_FIELD]: "x" })).toEqual({
       ok: false,
       error: "spam",
     });

@@ -8,6 +8,7 @@ vi.mock("resend", () => ({
 }));
 
 import { POST } from "@/app/api/contact/route";
+import { HONEYPOT_FIELD } from "@/lib/contact";
 
 const valid = { name: "Dana", email: "dana@example.com", message: "Hi Roman!" };
 
@@ -47,7 +48,7 @@ describe("POST /api/contact", () => {
   });
 
   it("silently accepts spam without sending", async () => {
-    const res = await post({ ...valid, company: "Acme" });
+    const res = await post({ ...valid, [HONEYPOT_FIELD]: "x" });
     expect(res.status).toBe(200);
     expect(send).not.toHaveBeenCalled();
   });

@@ -49,7 +49,7 @@ export const profile: Profile = {
   // TODO: add a headshot to /public and set e.g. "/headshot.jpg"
   photo: "",
   summary: [
-    "I started my career writing real-time software for avionics at Elbit Systems — code that runs on resource-constrained hardware, talks to FPGAs over serial buses, and puts augmented-reality symbology in front of pilots. That environment taught me to care about performance, reliability, and clean architecture.",
+    "I started my career writing real-time software for avionics at Elbit Systems — code running on resource-constrained microcontrollers that interface with FPGAs and serial buses, and that helps put augmented-reality symbology in front of pilots. That environment taught me to care about performance, reliability, and clean architecture.",
     "Today I bring that mindset to the web. I build full-stack applications with React, TypeScript, Node.js, Express, and MongoDB, with real-time features over WebSockets. After three years teaching C++ and leading student project teams, I'm looking for a full-stack role where low-level rigor meets product thinking.",
   ],
   stats: [
@@ -122,7 +122,7 @@ export const profile: Profile = {
       bullets: [
         "Taught C++ to students: object-oriented programming, data structures, and algorithms.",
         "Led student teams through their final programming projects, from planning to delivery, keeping them on schedule and hitting targets.",
-        "Coached problem-solving and practical engineering habits through code reviews and hands-on guidance.",
+        "Coached problem-solving and the practical application of C++ concepts through hands-on guidance.",
       ],
     },
     {

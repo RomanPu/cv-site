@@ -10,6 +10,14 @@ describe("buildSystemPrompt", () => {
     expect(prompt).toContain("digital twin");
   });
 
+  it("keeps first person even when declining", () => {
+    expect(prompt).toMatch(/even when declining/i);
+  });
+
+  it("does not open answers with an AI disclaimer (the widget already labels it)", () => {
+    expect(prompt).toMatch(/do not introduce yourself as an AI/i);
+  });
+
   it("includes real profile facts", () => {
     for (const fact of ["Elbit Systems", "ATmega2561", "Magshimim", "Coding Academy", "Hebrew"]) {
       expect(prompt).toContain(fact);

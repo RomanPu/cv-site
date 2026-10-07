@@ -1,4 +1,3 @@
-import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import { profile } from "@/data/profile";
@@ -12,17 +11,38 @@ const channels = [
   { label: "GitHub", value: github.replace(/^https?:\/\//, ""), href: github },
 ];
 
+const mailto = `mailto:${email}?subject=${encodeURIComponent("Hello Roman — from your portfolio")}`;
+
 export default function Contact() {
   return (
     <section id="contact" className="mx-auto max-w-6xl px-4 py-24 sm:px-6 md:py-32">
       <SectionHeading index={6} title="Contact" heading="Let's build something." />
 
-      <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-20 [&>*]:min-w-0">
+      <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-20 [&>*]:min-w-0">
         <Reveal>
-          <p className="text-lg leading-relaxed text-fg/75">
+          <p className="max-w-xl text-lg leading-relaxed text-fg/75">
             Hiring for a full-stack role, or have a project where performance matters? My inbox is open.
           </p>
-          <ul className="mt-10 divide-y divide-line border-y border-line">
+          <a
+            href={mailto}
+            className="group mt-10 flex items-center justify-between gap-6 border border-accent bg-accent/5 p-6 transition-colors hover:bg-accent sm:p-8"
+          >
+            <span>
+              <span className="block font-mono text-xs tracking-widest text-accent uppercase transition-colors group-hover:text-accent-ink">
+                {"// say hello"}
+              </span>
+              <span className="mt-2 block text-2xl font-bold tracking-tight break-all transition-colors group-hover:text-accent-ink sm:text-4xl">
+                {email}
+              </span>
+            </span>
+            <span className="text-3xl text-accent transition-all group-hover:translate-x-1 group-hover:text-accent-ink sm:text-5xl">
+              →
+            </span>
+          </a>
+        </Reveal>
+
+        <Reveal delay={120}>
+          <ul className="divide-y divide-line border-y border-line">
             {channels.map((c) => {
               const external = c.href.startsWith("http");
               return (
@@ -47,10 +67,6 @@ export default function Contact() {
               );
             })}
           </ul>
-        </Reveal>
-
-        <Reveal delay={120}>
-          <ContactForm />
         </Reveal>
       </div>
     </section>

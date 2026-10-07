@@ -21,19 +21,15 @@ All text lives in [`src/data/profile.ts`](src/data/profile.ts). Placeholders are
 
 The "CV" button serves `public/cv.pdf` — replace that file to update the download.
 
-## Contact form
+## Contact
 
-The form posts to `/api/contact`, which sends mail through [Resend](https://resend.com).
-Copy `.env.example` to `.env.local` and set:
+The contact section is a `mailto:` button plus links (email, phone, LinkedIn, GitHub) — no backend,
+so it works on static hosting.
 
-| Variable | Purpose |
-|---|---|
-| `RESEND_API_KEY` | Resend API key |
-| `CONTACT_TO_EMAIL` | Where messages are delivered |
-| `CONTACT_FROM_EMAIL` | Optional sender on a Resend-verified domain (defaults to `onboarding@resend.dev`, which only delivers to your Resend account email) |
+## Deploy (GitHub Pages)
 
-Without these, the form shows a "email me directly" fallback instead of failing silently.
+The site is a static export (`output: "export"` → `out/`). Every push to `main` runs
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which tests, builds with
+`PAGES_BASE_PATH=/<repo-name>`, and publishes to `https://<username>.github.io/<repo-name>/`.
 
-## Deploy
-
-Push to GitHub and import the repo on [Vercel](https://vercel.com); add the env vars above in the project settings.
+In the repo settings, **Pages → Source** must be set to **GitHub Actions**.

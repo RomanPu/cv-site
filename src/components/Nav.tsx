@@ -83,7 +83,7 @@ export default function Nav() {
 
         <div className="flex items-center gap-3">
           <a
-            href="/cv.pdf"
+            href={`${process.env.NEXT_PUBLIC_BASE_PATH}/cv.pdf`}
             download="Roman-Puchinsky-CV.pdf"
             className="border border-accent px-3 py-1.5 font-mono text-xs tracking-widest text-accent uppercase transition-colors hover:bg-accent hover:text-accent-ink"
           >

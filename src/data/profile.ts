@@ -43,7 +43,8 @@ export const profile: Profile = {
   lastName: "Puchinsky",
   initials: "RP",
   role: "full-stack developer",
-  headline: "Full-stack developer, built on an embedded systems foundation.",
+  headline:
+    "Embedded engineer turned web builder. I ship fast, reliable apps with the rigor of real-time code.",
   location: "Israel",
   // TODO: add a headshot to /public and set e.g. "/headshot.jpg"
   photo: "",

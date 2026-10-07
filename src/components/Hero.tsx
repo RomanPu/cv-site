@@ -42,15 +42,15 @@ export default function Hero() {
   return (
     <section id="top" className="relative flex min-h-dvh flex-col justify-center pt-16">
       <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_auto] lg:gap-16">
-        <div>
+        <div className="min-w-0">
           <p className="inline-flex items-center gap-2 border border-accent/30 bg-accent/5 px-3 py-1 font-mono text-xs tracking-wider text-accent">
             <span className="size-1.5 rounded-full bg-accent" />
             Open to full-stack roles
           </p>
 
           <h1 className="mt-8 leading-[0.85] font-bold tracking-tighter uppercase">
-            <span className="block text-[clamp(3.25rem,12vw,8.5rem)]">{profile.firstName}</span>
-            <span className="block text-[clamp(3.25rem,12vw,8.5rem)] text-transparent [-webkit-text-stroke:1.5px_var(--fg)]">
+            <span className="block text-[clamp(3.25rem,12vw,8.5rem)] lg:text-[clamp(3rem,8.5vw,8.5rem)]">{profile.firstName}</span>
+            <span className="block text-[clamp(3.25rem,12vw,8.5rem)] lg:text-[clamp(3rem,8.5vw,8.5rem)] text-transparent [-webkit-text-stroke:1.5px_var(--fg)]">
               {profile.lastName}
             </span>
           </h1>

@@ -5,7 +5,8 @@ const ticker = profile.skills.flatMap((group) => group.items);
 
 function Portrait() {
   return (
-    <div className="relative mx-auto aspect-[4/5] w-56 sm:w-64 lg:w-72">
+    <div className="rise relative mx-auto aspect-[4/5] w-56 [animation-delay:300ms] sm:w-64 lg:w-72">
+      <div aria-hidden className="absolute -inset-16 -z-10 rounded-full bg-accent/10 blur-3xl" />
       {/* Corner brackets */}
       <span aria-hidden className="absolute -top-2 -left-2 size-5 border-t-2 border-l-2 border-accent" />
       <span aria-hidden className="absolute -right-2 -bottom-2 size-5 border-r-2 border-b-2 border-accent" />
@@ -43,25 +44,25 @@ export default function Hero() {
     <section id="top" className="relative flex min-h-dvh flex-col justify-center pt-16">
       <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_auto] lg:gap-16">
         <div className="min-w-0">
-          <p className="inline-flex items-center gap-2 border border-accent/30 bg-accent/5 px-3 py-1 font-mono text-xs tracking-wider text-accent">
+          <p className="rise inline-flex items-center gap-2 border border-accent/30 bg-accent/5 px-3 py-1 font-mono text-xs tracking-wider text-accent">
             <span className="size-1.5 rounded-full bg-accent" />
             Open to full-stack roles
           </p>
 
           <h1 className="mt-8 leading-[0.85] font-bold tracking-tighter uppercase">
-            <span className="block text-[clamp(3.25rem,12vw,8.5rem)] lg:text-[clamp(3rem,8.5vw,8.5rem)]">{profile.firstName}</span>
-            <span className="block text-[clamp(3.25rem,12vw,8.5rem)] lg:text-[clamp(3rem,8.5vw,8.5rem)] text-transparent [-webkit-text-stroke:1.5px_var(--fg)]">
+            <span className="rise block text-[clamp(3.25rem,12vw,8.5rem)] [animation-delay:80ms] lg:text-[clamp(3rem,8.5vw,8.5rem)]">{profile.firstName}</span>
+            <span className="rise block text-[clamp(3.25rem,12vw,8.5rem)] lg:text-[clamp(3rem,8.5vw,8.5rem)] text-transparent [-webkit-text-stroke:1.5px_var(--fg)] [animation-delay:160ms]">
               {profile.lastName}
             </span>
           </h1>
 
-          <p className="mt-8 font-mono text-sm text-muted sm:text-base">
+          <p className="rise mt-8 font-mono text-sm [animation-delay:260ms] text-muted sm:text-base">
             <span className="text-accent">&gt;</span> {profile.role}
             <span className="caret ml-0.5 inline-block h-[1.1em] w-[0.55em] translate-y-[0.15em] bg-accent" />
           </p>
-          <p className="mt-4 max-w-xl text-xl text-balance text-fg/90 sm:text-2xl">{profile.headline}</p>
+          <p className="rise mt-4 max-w-xl [animation-delay:320ms] text-xl text-balance text-fg/90 sm:text-2xl">{profile.headline}</p>
 
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="rise mt-10 flex flex-wrap gap-4 [animation-delay:400ms]">
             <a
               href="#projects"
               className="group inline-flex items-center gap-3 bg-accent px-6 py-3 font-mono text-sm font-bold tracking-wider text-accent-ink uppercase transition-transform hover:-translate-y-0.5"

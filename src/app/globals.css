@@ -81,6 +81,17 @@ body::after {
   animation: blink 1s step-end infinite;
 }
 
+/* Hero entrance */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+}
+.rise {
+  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
 @keyframes marquee {
   to {
     transform: translateX(-50%);

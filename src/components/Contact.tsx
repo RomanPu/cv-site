@@ -17,7 +17,7 @@ export default function Contact() {
     <section id="contact" className="mx-auto max-w-6xl px-4 py-24 sm:px-6 md:py-32">
       <SectionHeading index={6} title="Contact" heading="Let's build something." />
 
-      <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
+      <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-20 [&>*]:min-w-0">
         <Reveal>
           <p className="text-lg leading-relaxed text-fg/75">
             Hiring for a full-stack role, or have a project where performance matters? My inbox is open.

@@ -15,12 +15,30 @@ const links = [
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Highlight the section crossing the middle of the viewport.
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(`#${entry.target.id}`);
+        }
+      },
+      { rootMargin: "-50% 0px -50% 0px" },
+    );
+    for (const href of ["#top", ...links.map((l) => l.href)]) {
+      const el = document.querySelector(href);
+      if (el) observer.observe(el);
+    }
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -50,9 +68,14 @@ export default function Nav() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="font-mono text-xs tracking-widest text-muted uppercase transition-colors hover:text-accent"
+                aria-current={active === link.href ? "true" : undefined}
+                className="relative font-mono text-xs tracking-widest text-muted uppercase transition-colors hover:text-accent aria-[current]:text-accent"
               >
                 {link.label}
+                <span
+                  aria-hidden
+                  className={`absolute inset-x-0 -bottom-1.5 h-px bg-accent transition-transform duration-300 ${active === link.href ? "scale-x-100" : "scale-x-0"}`}
+                />
               </a>
             </li>
           ))}

@@ -81,6 +81,12 @@ body::after {
   animation: blink 1s step-end infinite;
 }
 
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* Scroll-in reveal (toggled by <Reveal>) */
 .reveal {
   opacity: 0;

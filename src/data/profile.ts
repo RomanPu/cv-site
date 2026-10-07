@@ -25,6 +25,8 @@ export type Profile = {
   headline: string;
   role: string;
   location: string;
+  /** Path under /public, e.g. "/headshot.jpg". Empty shows the monogram tile. */
+  photo: string;
   summary: string[];
   stats: { value: string; label: string }[];
   contact: { email: string; phone: string; linkedin: string; github: string };
@@ -43,6 +45,8 @@ export const profile: Profile = {
   role: "full-stack developer",
   headline: "Full-stack developer, built on an embedded systems foundation.",
   location: "Israel",
+  // TODO: add a headshot to /public and set e.g. "/headshot.jpg"
+  photo: "",
   summary: [
     "I started my career writing real-time software for avionics at Elbit Systems — code that runs on resource-constrained hardware, talks to FPGAs over serial buses, and puts augmented-reality symbology in front of pilots. That environment taught me to care about performance, reliability, and clean architecture.",
     "Today I bring that mindset to the web. I build full-stack applications with React, TypeScript, Node.js, Express, and MongoDB, with real-time features over WebSockets. After three years teaching C++ and leading student project teams, I'm looking for a full-stack role where low-level rigor meets product thinking.",

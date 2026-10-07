@@ -1,3 +1,15 @@
+import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
+import Nav from "@/components/Nav";
+
 export default function Home() {
-  return <main className="p-8 font-mono text-accent">// booting…</main>;
+  return (
+    <>
+      <Nav />
+      <main>
+        <Hero />
+      </main>
+      <Footer />
+    </>
+  );
 }

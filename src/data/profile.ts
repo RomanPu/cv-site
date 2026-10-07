@@ -62,8 +62,7 @@ export const profile: Profile = {
     // TODO: replace with real phone number
     phone: "+972-XX-XXX-XXXX",
     linkedin: "https://www.linkedin.com/in/roman-puchinsky",
-    // TODO: replace with real GitHub profile URL
-    github: "https://github.com/your-username",
+    github: "https://github.com/RomanPu",
   },
   skills: [
     {

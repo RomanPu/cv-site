@@ -15,7 +15,7 @@ npm run build   # production build
 
 All text lives in [`src/data/profile.ts`](src/data/profile.ts). Placeholders are marked `// TODO:`:
 
-- `contact.phone`, `contact.github`
+- `contact.phone`
 - `photo` — drop an image into `public/` (e.g. `public/headshot.jpg`) and set `photo: "/headshot.jpg"`
 - `projects` — the three project cards (set `github` / `live` URLs; `"#"` renders the link disabled)
 

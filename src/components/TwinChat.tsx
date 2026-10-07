@@ -58,6 +58,7 @@ export default function TwinChat() {
     try {
       const res = await fetch(`${TWIN_URL}/chat`, {
         method: "POST",
+        signal: AbortSignal.timeout(25_000),
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: history.map(({ role, text }) => ({ role, text })) }),
       });

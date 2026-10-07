@@ -39,6 +39,12 @@ describe("askGemini", () => {
     expect(body.generationConfig).toEqual({ maxOutputTokens: 400, temperature: 0.4 });
   });
 
+  it("sets a timeout signal on the request", async () => {
+    const fetchFn = vi.fn<typeof fetch>().mockResolvedValue(reply("ok"));
+    await call(fetchFn);
+    expect(fetchFn.mock.calls[0][1]?.signal).toBeInstanceOf(AbortSignal);
+  });
+
   it("returns the joined, trimmed reply text", async () => {
     const fetchFn = vi.fn<typeof fetch>().mockResolvedValue(reply("At Elbit ", "Systems. "));
     await expect(call(fetchFn)).resolves.toBe("At Elbit Systems.");

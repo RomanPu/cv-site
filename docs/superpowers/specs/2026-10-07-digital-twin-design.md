@@ -10,7 +10,7 @@ A chat widget on the portfolio where visitors talk to "Roman's digital twin" —
 ## Decisions
 
 - **Backend:** Cloudflare Worker (site stays on GitHub Pages; Pages cannot hold secrets).
-- **Model:** `gemini-2.5-flash-lite` via Gemini REST `generateContent` (cheapest: $0.10 / $0.40 per 1M in/out tokens, free tier available). Model id is a Worker var so it can be swapped without code changes.
+- **Model:** `gemini-3.1-flash-lite` (updated during build: `gemini-2.5-flash-lite` returns 404 "no longer available to new users"; originally specified as `gemini-2.5-flash-lite`) via Gemini REST `generateContent` (cheapest: $0.10 / $0.40 per 1M in/out tokens, free tier available). Model id is a Worker var so it can be swapped without code changes.
 - **Voice:** first person ("I worked at Elbit…"), clearly labelled as AI.
 - **Knowledge:** only `src/data/profile.ts`. Anything else (salary, availability, notice period, personal life) → polite deflection to `romanpu@gmail.com`. No extra facts provided by user.
 

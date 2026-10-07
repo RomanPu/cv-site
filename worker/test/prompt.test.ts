@@ -37,6 +37,19 @@ describe("buildSystemPrompt", () => {
     expect(prompt).not.toContain("Project One");
   });
 
+  it("uses real projects and drops the coming-soon rule once projects exist", () => {
+    const withProjects = buildSystemPrompt({
+      ...profile,
+      projects: [
+        { title: "Chat App", description: "Realtime chat", tags: ["React"], github: "https://github.com/x/y", live: "#" },
+        { title: "Half Done", description: "Placeholder — describe it", tags: [], github: "https://github.com/x/z", live: "#" },
+      ],
+    });
+    expect(withProjects).toContain("Chat App");
+    expect(withProjects).not.toMatch(/coming soon/i);
+    expect(withProjects).not.toContain("Half Done");
+  });
+
   it("leaves out placeholder contact details", () => {
     expect(prompt).not.toContain("XX-XXX");
   });

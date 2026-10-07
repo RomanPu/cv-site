@@ -25,6 +25,16 @@ function log(level: "info" | "error", event: string, data: Record<string, unknow
   console[level === "error" ? "error" : "log"](JSON.stringify({ level, event, ...data }));
 }
 
+/** IPv6 clients usually own a whole /64, so rate-limit by prefix rather than full address. */
+export function rateLimitKey(ip: string): string {
+  if (!ip.includes(":")) return ip;
+  const [head, tail = ""] = ip.toLowerCase().split("::");
+  const h = head ? head.split(":") : [];
+  const t = tail ? tail.split(":") : [];
+  const groups = [...h, ...Array(Math.max(0, 8 - h.length - t.length)).fill("0"), ...t];
+  return `${groups.slice(0, 4).map((g) => parseInt(g || "0", 16).toString(16)).join(":")}::/64`;
+}
+
 export async function handle(request: Request, env: Env, deps: Deps = {}): Promise<Response> {
   const ask = deps.ask ?? askGemini;
   const url = new URL(request.url);
@@ -50,7 +60,7 @@ export async function handle(request: Request, env: Env, deps: Deps = {}): Promi
 
   const ip = request.headers.get("cf-connecting-ip") ?? "unknown";
   const [perIp, global] = await Promise.all([
-    env.IP_LIMITER.limit({ key: ip }),
+    env.IP_LIMITER.limit({ key: rateLimitKey(ip) }),
     env.GLOBAL_LIMITER.limit({ key: "global" }),
   ]);
   if (!perIp.success || !global.success) {

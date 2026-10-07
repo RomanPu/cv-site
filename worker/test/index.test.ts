@@ -81,6 +81,14 @@ describe("worker handler", () => {
     expect(ask).not.toHaveBeenCalled();
   });
 
+  it("keys IPv6 clients by their /64 prefix", async () => {
+    const env = makeEnv();
+    const r = req({ body: valid });
+    r.headers.set("cf-connecting-ip", "2001:db8:abcd:12:1111:2222:3333:4444");
+    await handle(r, env, { ask });
+    expect(env.IP_LIMITER.limit).toHaveBeenCalledWith({ key: "2001:db8:abcd:12::/64" });
+  });
+
   it("returns 429 when the global limit is hit", async () => {
     const env = makeEnv({ GLOBAL_LIMITER: limiter(false) } as Partial<Env>);
     expect((await handle(req({ body: valid }), env, { ask })).status).toBe(429);

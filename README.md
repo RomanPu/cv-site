@@ -32,8 +32,11 @@ A floating "Ask my twin" chat answers visitors' questions in first person, groun
 `src/data/profile.ts`. The browser calls a Cloudflare Worker in [`worker/`](worker/) that holds the
 Gemini API key and calls `gemini-3.1-flash-lite` (set via `GEMINI_MODEL` in `worker/wrangler.jsonc`).
 
-- Guardrails: only your site's origin is allowed; 10 msgs/min per IP and 60/min globally; 500-char
-  messages, last 10 turns, ~400-token answers.
+- Guardrails: browser requests only from your site's origin (Origin can be spoofed by scripts, so the
+  rate limits are the real defence); 10 msgs/min per IPv4 address or IPv6 /64, and 60/min per Cloudflare
+  location; 500-char messages, last 10 turns, ~400-token answers, 20 s timeout.
+- **Cap your spend:** set a requests-per-day quota on the Gemini API key in Google Cloud Console
+  (APIs & Services → Generative Language API → Quotas). Budget alerts alone do not stop spending.
 - Local dev: put `GEMINI_API_KEY=...` in `worker/.dev.vars`, run `npm run dev` in `worker/`, and set
   `NEXT_PUBLIC_TWIN_URL=http://localhost:8787` in `.env.local`.
 - Deploy the Worker: `cd worker && npx wrangler deploy` (secret once: `npx wrangler secret put GEMINI_API_KEY`).

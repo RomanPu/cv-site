@@ -19,6 +19,7 @@ export async function askGemini({ apiKey, model, system, messages, fetchFn = fet
     `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
     {
       method: "POST",
+      signal: AbortSignal.timeout(20_000),
       headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
       body: JSON.stringify({
         systemInstruction: { parts: [{ text: system }] },

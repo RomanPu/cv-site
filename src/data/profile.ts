@@ -120,7 +120,7 @@ export const profile: Profile = {
       period: "2021 — 2024",
       location: "Israel",
       bullets: [
-        "Taught C++ to high-school students: object-oriented programming, data structures, and algorithms.",
+        "Taught C++ to students: object-oriented programming, data structures, and algorithms.",
         "Led student teams through their final programming projects, from planning to delivery, keeping them on schedule and hitting targets.",
         "Coached problem-solving and practical engineering habits through code reviews and hands-on guidance.",
       ],

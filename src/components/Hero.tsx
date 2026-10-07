@@ -14,7 +14,7 @@ function Portrait() {
       <div className="relative size-full overflow-hidden border border-line bg-bg-elev">
         {profile.photo ? (
           <Image
-            src={profile.photo}
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH}${profile.photo}`}
             alt={`Portrait of ${profile.name}`}
             fill
             priority
